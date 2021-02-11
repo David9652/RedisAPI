@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "venv\\Lib\\site-packages",
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+}
