@@ -2,17 +2,18 @@
 
 # Creating virtual environment
 # Make sure to have already installed **virtualenv**,`$ pip install virtualenv` and Python 3.8.3
-#virtualenv -p python3 venv
+virtualenv -p python3 venv
 # Activating virtual environment
-#source ./venv/bin/activate 
+source ./venv/bin/activate 
 #source ./venv/Scripts/activate
 # Upgrading pip
-#pip install --upgrade pip
+pip install --upgrade pip
 # Installing dependencies
-#pip install -r requirements.txt
+pip install -r requirements.txt
 # Setting environment variables
 export FLASK_APP=main.py # Setting run file
-#export FLASK_ENV=development # Setting development environment
-export FLASK_ENV=development # Setting development environment
+export FLASK_ENV=production # Setting development environment
+#set FLASK_APP=main.py # Setting run file
+#set FLASK_ENV=production # Setting development environment
 # Running flask
 flask run
