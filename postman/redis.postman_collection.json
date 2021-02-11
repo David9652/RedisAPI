@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "57436834-bcc7-4d4f-a682-2b475d7236f3",
+		"name": "redis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "STATUS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/server/status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"server",
+						"status"
+					],
+					"query": [
+						{
+							"key": "section",
+							"value": "clients",
+							"description": "get specific section information",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Used to get health status of redis server. You can use the 'section' parameter to get specific information. Available values are: 'server','clients','memory','stats','replication','cpu' and 'cluster'. If you do not send any parameter, it will bring you all the information."
+			},
+			"response": []
+		}
+	]
+}

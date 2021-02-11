@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "5e1fe399-5fee-4ed8-8454-206d478142a4",
+		"name": "queue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LPOP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/lpop",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"lpop"
+					],
+					"query": [
+						{
+							"key": "times",
+							"value": "1",
+							"description": "default times",
+							"disabled": true
+						},
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Remove a message to the head queue. You can remove in batch using 'times' parameter. Also, you can choose the list and the database from which you want to remove using 'list' and 'db' parameters, respectively. If you do not send any parameter, it will choose '1' as times, 'meli' as list and '0' as db by default."
+			},
+			"response": []
+		},
+		{
+			"name": "RPOP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/rpop",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"rpop"
+					],
+					"query": [
+						{
+							"key": "times",
+							"value": "1",
+							"description": "default times",
+							"disabled": true
+						},
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Remove a message to the tail queue. You can remove in batch using 'times' parameter. Also, you can choose the list and the database from which you want to remove using 'list' and 'database' parameters, respectively. If you do not send any parameter, it will choose '1' as times, 'meli' as list and '0' as db by default."
+			},
+			"response": []
+		},
+		{
+			"name": "LPUSH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\":\"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/lpush",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"lpush"
+					],
+					"query": [
+						{
+							"key": "times",
+							"value": "1",
+							"description": "default times",
+							"disabled": true
+						},
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Add a message to the head queue. You can send in batch using 'times' parameter. Also, you can choose the list and the database from which you want to send using 'list' and 'db' parameters, respectively. If you do not send any parameter, it will choose '1' as times, 'meli' as list and '0' as db by default."
+			},
+			"response": []
+		},
+		{
+			"name": "RPUSH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\" :\"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/rpush",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"rpush"
+					],
+					"query": [
+						{
+							"key": "times",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Add a message to the tail queue. You can send in batch using 'times' parameter. Also, you can choose the list and the database from which you want to send using 'list' and 'db' parameters, respectively. If you do not send any parameter, it will choose '1' as times, 'meli' as list and '0' as db by default."
+			},
+			"response": []
+		},
+		{
+			"name": "COUNT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/count",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"count"
+					],
+					"query": [
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Count the messages of a list. You can choose the list and the database from which you want to count using 'list' and 'db' parameters, respectively. If you do not send any parameter, it will choose 'meli' as list and '0' as db by default."
+			},
+			"response": []
+		},
+		{
+			"name": "LRANGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/queue/lrange",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"queue",
+						"lrange"
+					],
+					"query": [
+						{
+							"key": "list",
+							"value": "meli",
+							"description": "default list",
+							"disabled": true
+						},
+						{
+							"key": "db",
+							"value": "0",
+							"description": "default database",
+							"disabled": true
+						},
+						{
+							"key": "start",
+							"value": "0",
+							"description": "default start index",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "-1",
+							"description": "default end index",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get the messages of a list. You can choose the list and the database from which you want to count using 'list' and 'db' parameters, respectively. Also, you can set the start and end index. If you do not send any parameter, it will choose 'meli' as list, '0' as db, '0' as start and '-1' end by default."
+			},
+			"response": []
+		}
+	]
+}
