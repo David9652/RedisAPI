@@ -65,11 +65,12 @@ def global_error_handler(error):
     logging.info('START')
     logging.info('Validating HTTP exception')
 
-    code = 500
+    status_code = 500
     if isinstance(error, HTTPException): # Checking if it is an HTTP exception
-        code = error.code
+        status_code = error.code
 
+    logging.error(f"message: {error.description}, status code: {status_code}")
     logging.info('Validation done')
     logging.info('END')
 
-    return jsonify(message=str(error)), code
+    return jsonify(message=error.description), status_code
