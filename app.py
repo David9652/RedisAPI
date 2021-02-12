@@ -1,8 +1,9 @@
 import logging  # Used to write logs throughout the application
 import os # Used to get environment variable
-from flask import Flask # Used to create the application instance
+from flask import Flask, jsonify # Used to create the application instance
 from api.queue.views import queue # Used to import queue blueprint 
-from api.server.views import server # Used to import server blueprint 
+from api.server.views import server # Used to import server blueprint
+from werkzeug.exceptions import HTTPException, default_exceptions # Used to get all HTTP exceptions
 
 def create_app():
     """ Used to create a Flask application """
@@ -30,6 +31,15 @@ def create_app():
 
     register(app, queue, server) # Registering blueprints
 
+    logging.info('Registering HTTP exceptions')
+
+    for exception in default_exceptions:
+        logging.debug(f'Registering {exception} exception')
+        app.register_error_handler(exception, global_error_handler)  # Registering HTTP Exceptions
+        logging.debug(f'Exception {exception} registered')
+
+    logging.info('HTTP exceptions registered')
+
     logging.info('Application was successfully built')
     logging.info('END')
 
@@ -48,3 +58,18 @@ def register(app, *argv):
 
     logging.info('Blueprints were successfully registered')
     logging.info('END')
+
+def global_error_handler(error):
+    """ Used to handle HTTP exceptions and send a JSON response """
+    
+    logging.info('START')
+    logging.info('Validating HTTP exception')
+
+    code = 500
+    if isinstance(error, HTTPException): # Checking if it is an HTTP exception
+        code = error.code
+
+    logging.info('Validation done')
+    logging.info('END')
+
+    return jsonify(message=str(error)), code
