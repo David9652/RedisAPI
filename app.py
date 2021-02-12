@@ -1,9 +1,9 @@
 import logging  # Used to write logs throughout the application
 import os # Used to get environment variable
 from flask import Flask, jsonify # Used to create the application instance
+from werkzeug.exceptions import HTTPException, default_exceptions # Used to get all HTTP exceptions
 from api.queue.views import queue # Used to import queue blueprint 
 from api.server.views import server # Used to import server blueprint
-from werkzeug.exceptions import HTTPException, default_exceptions # Used to get all HTTP exceptions
 
 def create_app():
     """ Used to create a Flask application """
